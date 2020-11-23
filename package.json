@@ -20,6 +20,7 @@
     "lib/LruMemoize.js"
   ],
   "dependencies": {
+    "eslint-plugin-jsdoc": "^30.7.8",
     "esm": "^3.2.25",
     "lru-cache": "^6.0.0"
   },

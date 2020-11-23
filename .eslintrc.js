@@ -7,6 +7,6 @@ module.exports = {
     assertNoError: true,
     should: true
   },
-  extends: ['digitalbazaar'],
+  extends: ['digitalbazaar', 'digitalbazaar/jsdoc'],
   ignorePatterns: ['node_modules/']
 };
