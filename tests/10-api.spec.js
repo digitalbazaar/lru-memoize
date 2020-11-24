@@ -24,7 +24,7 @@ describe('API', () => {
       };
       const result = await m.memoize({
         key: 'test1',
-        fn: () => testFn()
+        fn: testFn
       });
       should.exist(result);
       result.success.should.be.true;
@@ -35,7 +35,7 @@ describe('API', () => {
       executedTestFn = false;
       const result2 = await m.memoize({
         key: 'test1',
-        fn: () => testFn()
+        fn: testFn
       });
       should.exist(result2);
       result2.should.eql(result);
@@ -54,7 +54,7 @@ describe('API', () => {
       };
       const result = await m.memoize({
         key: 'test1',
-        fn: () => testFn()
+        fn: testFn
       });
       should.exist(result);
       result.success.should.be.true;
@@ -66,7 +66,7 @@ describe('API', () => {
       executedTestFn = false;
       const result2 = await m.memoize({
         key: 'test1',
-        fn: () => testFn()
+        fn: testFn
       });
       should.exist(result2);
       result2.success.should.be.true;
@@ -83,7 +83,7 @@ describe('API', () => {
       executedTestFn = false;
       const result3 = await m.memoize({
         key: 'test1',
-        fn: () => testFn()
+        fn: testFn
       });
       should.exist(result3);
       result3.success.should.be.true;
