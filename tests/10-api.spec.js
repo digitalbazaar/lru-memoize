@@ -1,20 +1,19 @@
 /*!
  * Copyright (c) 2020 Digital Bazaar, Inc. All rights reserved.
  */
-import * as lruMemoize from '..';
+import {LruCache} from '..';
 import delay from 'delay';
 
 describe('API', () => {
   it('has the proper exports', async () => {
-    should.exist(lruMemoize.default);
-    should.exist(lruMemoize.default.LruMemoize);
-    const m = new lruMemoize.default.LruMemoize();
+    should.exist(LruCache);
+    const m = new LruCache();
     should.exist(m);
     m.memoize.should.be.a('function');
   });
   describe('memoize', () => {
     it('adds an item to the cache', async () => {
-      const m = new lruMemoize.default.LruMemoize();
+      const m = new LruCache();
       let executedTestFn = false;
       const testFn = async () => {
         // simulate an async task
@@ -44,7 +43,7 @@ describe('API', () => {
   });
   describe('delete', () => {
     it('removes an item from the cache', async () => {
-      const m = new lruMemoize.default.LruMemoize();
+      const m = new LruCache();
       let executedTestFn = false;
       const testFn = async () => {
         // simulate an async task
