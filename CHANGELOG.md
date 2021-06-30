@@ -1,5 +1,10 @@
 # @digitalbazaar/lru-memoize ChangeLog
 
+## 2.1.0 - 2021-xx-xx
+
+### Added
+- Add dispose on settle feature.
+
 ## 2.0.0 - 2021-03-02
 
 ### Changed
