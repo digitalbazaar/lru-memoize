@@ -3,7 +3,7 @@
 [![Node.js CI](https://github.com/digitalbazaar/lru-memoize/workflows/Node.js%20CI/badge.svg)](https://github.com/digitalbazaar/lru-memoize/actions?query=workflow%3A%22Node.js+CI%22)
 [![NPM Version](https://img.shields.io/npm/v/@digitalbazaar/lru-memoize.svg)](https://npm.im/@digitalbazaar/lru-memoize)
 
-> A Memoized wrapper around the javascript [`lru-cache`](https://www.npmjs.com/package/lru-cache) library.
+> A Memoized wrapper around the JavaScript [`lru-cache`](https://www.npmjs.com/package/lru-cache) library.
 
 ## Table of Contents
 
