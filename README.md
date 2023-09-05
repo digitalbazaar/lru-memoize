@@ -15,7 +15,7 @@
 
 ## Background
 
-lru-memoize is used to
+`lru-memoize` is used to
 to [memoize](https://en.wikipedia.org/wiki/Memoization) promises
 (as opposed to just the results of the operations),
 which helps in high-concurrency use cases. (And in turn, it uses
