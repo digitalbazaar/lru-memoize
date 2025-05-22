@@ -1,6 +1,6 @@
 # @digitalbazaar/lru-memoize ChangeLog
 
-## 4.0.0 - 2025-mm-dd
+## 4.0.0 - 2025-05-22
 
 ### Changed
 - **BREAKING**: Use `lru-cache@11`. This replaces `lru-cache@6` which has a
