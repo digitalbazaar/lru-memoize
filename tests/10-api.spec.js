@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2020-2023 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2020-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import delay from 'delay';
 import {LruCache} from '../lib/index.js';
@@ -7,7 +7,7 @@ import {LruCache} from '../lib/index.js';
 describe('API', () => {
   it('has the proper exports', async () => {
     should.exist(LruCache);
-    const m = new LruCache();
+    const m = new LruCache({ttl: 10});
     should.exist(m);
     m.memoize.should.be.a('function');
   });
@@ -40,7 +40,7 @@ describe('API', () => {
       result2.should.eql(result);
       executedTestFn.should.be.false;
     });
-    it('adds an item to the cache w/custom `maxAge`', async () => {
+    it('adds an item to the cache w/custom `ttl`', async () => {
       const m = new LruCache();
       let executedTestFn = false;
       const testFn = async () => {
@@ -49,11 +49,11 @@ describe('API', () => {
         executedTestFn = true;
         return {success: true, timestamp: Date.now()};
       };
-      const maxAge = 200;
+      const ttl = 200;
       const result = await m.memoize({
         key: 'test1',
         fn: testFn,
-        options: {maxAge}
+        options: {ttl}
       });
       should.exist(result);
       result.success.should.be.true;
@@ -71,7 +71,7 @@ describe('API', () => {
       executedTestFn.should.be.false;
 
       // third test should not find the expired result
-      await delay(maxAge + 1);
+      await delay(ttl + 1);
       executedTestFn = false;
       const result3 = await m.memoize({
         key: 'test1',
@@ -114,9 +114,12 @@ describe('API', () => {
       executedTestFn.should.be.false;
 
       // delete the cached promise
-      const r = m.delete('test1');
-      // always returns undefined
-      should.not.exist(r);
+      const deleted1 = m.delete('test1');
+      // should return `true` because `test1` was removed
+      deleted1.should.equal(true);
+      // should now return `false` because `test1` was already removed
+      const deleted2 = m.delete('test1');
+      deleted2.should.equal(false);
 
       // after deleting the cache entry, testFn should be executed producing
       // a result with a new timestamp
