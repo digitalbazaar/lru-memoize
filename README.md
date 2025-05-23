@@ -36,19 +36,17 @@ npm install
 To import:
 
 ```js
-import { LruCache } from '@digitalbazaar/lru-memoize';
-// or
-const { LruCache } = require('@digitalbazaar/lru-memoize');
+import {LruCache} from '@digitalbazaar/lru-memoize';
 ```
 
 The memoized `LruCache` constructor passes any options given to it through to
-the `lru-cache` constructor, so  see that repo for the full list of cache
+the `lru-cache` constructor, so see that repo for the full list of cache
 management options. Commonly used ones include:
 
-* `max` (default: 100) - maximum size of the cache.
-* `maxAge` (default: 5 sec/5000 ms) - maximum age of an item in ms.
+* `max` (default: 1000) - maximum size of the cache.
+* `ttl` - maximum age of an item in ms.
 * `updateAgeOnGet` (default: `false`) - When using time-expiring entries with
-  `maxAge`, setting this to true will make each entry's effective time update to
+  `ttl`, setting this to true will make each entry's effective time update to
   the current time whenever it is retrieved from cache, thereby extending the
   expiration date of the entry.
 
@@ -59,10 +57,10 @@ For example, say you have a function `fetchStatus()` that retrieves a result fro
 `delay()` wait). To cache the result of this function:
 
 ```js
-import { LruCache } from '@digitalbazaar/lru-memoize';
+import {LruCache} from '@digitalbazaar/lru-memoize';
 
-// Cache expiration/TTL: 5 seconds
-const myCache = new LruCache({ maxAge: 5000 });
+// cache expiration/TTL: 5 seconds
+const myCache = new LruCache({ttl: 5000});
 
 async function fetchStatus() {
   // simulate an async task
@@ -81,7 +79,7 @@ const result = await myCache.memoize({
 const url = 'https://api.example';
 const result = await myCache.memoize({
   key: 'myResults',
-  fn: async () => fetchMyResultsFromWeb({ url })
+  fn: async () => fetchMyResultsFromWeb({url})
 });
 ```
 

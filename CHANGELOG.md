@@ -8,8 +8,7 @@
   previously accessed the underlying cache interface. The main interface
   of this module has only changed in that the options it accepts when
   creating the cache need to now conform to v11 of `lru-cache` instead of
-  v6. The v6 `maxAge` option, if given, will be coerced to `ttl` to match
-  v11.
+  v6. The v6 `maxAge` option, if given, will result in an error being thrown.
 - **BREAKING**: The `delete()` method now returns `true` if the passed key was
   removed from the cache and `false` if not, matching the v11 `delete()`
   interface. Previously, `undefined` was returned in both cases.
